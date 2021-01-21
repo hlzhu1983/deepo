@@ -8,6 +8,6 @@
 # tensorflow    latest (pip)
 # ==================================================================
 
-FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/work/deepo:v1.1
+FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:v1.1
 ADD kite-installer /opt/
 RUN /opt/kite-installer install
