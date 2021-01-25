@@ -9,5 +9,8 @@
 # ==================================================================
 
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:v1.1
-
-RUN yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
+ADD https://link.zhihu.com/?target=https%3A//jfds-1252952517.cos.ap-chengdu.myqcloud.com/jupyterhub/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl /opt/
+RUN yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
+    pip install jupyterhub && \
+    pip install /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl
+    
