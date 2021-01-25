@@ -9,5 +9,5 @@
 # ==================================================================
 
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:v1.1
-ADD kite-installer /opt/
-RUN /opt/kite-installer install
+
+RUN yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
