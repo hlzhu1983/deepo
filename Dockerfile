@@ -193,13 +193,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 && \
 
 # ==================================================================
-# nodejs
-# ------------------------------------------------------------------
-    curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" && \
-    tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 && \
-    rm "node-v$NODE_VERSION-linux-x64.tar.xz" && \
-
-# ==================================================================
 # config & cleanup
 # ------------------------------------------------------------------
 
