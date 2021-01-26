@@ -14,7 +14,8 @@ FROM ubuntu:18.04
 ENV LANG C.UTF-8
 ADD https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/jupyterhub/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl /opt/
 ADD https://nodejs.org/dist/v15.6.0/node-v15.6.0-linux-x64.tar.xz /opt/
-RUN xz /opt/node-v15.6.0-linux-x64.tar.xz && \
+RUN apt-get install xz-utils && \
+          xz /opt/node-v15.6.0-linux-x64.tar.xz && \
           tar -xvf node-v15.6.0-linux-x64.tar && \
           ln -s /opt/nodejs/bin/node /usr/local/bin/node && \
           ln -s /opt/nodejs/bin/npm /usr/local/bin/npm
