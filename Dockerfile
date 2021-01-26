@@ -12,13 +12,8 @@
 
 FROM ubuntu:18.04
 ENV LANG C.UTF-8
+ENV NODE_VERSION 15.6.0
 ADD https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/jupyterhub/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl /opt/
-ADD https://nodejs.org/dist/v15.6.0/node-v15.6.0-linux-x64.tar.xz /opt/
-RUN apt-get install xz-utils && \
-          xz /opt/node-v15.6.0-linux-x64.tar.xz && \
-          tar -xvf node-v15.6.0-linux-x64.tar && \
-          ln -s /opt/nodejs/bin/node /usr/local/bin/node && \
-          ln -s /opt/nodejs/bin/npm /usr/local/bin/npm
 RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="git clone --depth 10" && \
@@ -196,6 +191,13 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
           .. && \
     make -j"$(nproc)" install && \
     ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 && \
+
+# ==================================================================
+# nodejs
+# ------------------------------------------------------------------
+    curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" && \
+    tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 && \
+    rm "node-v$NODE_VERSION-linux-x64.tar.xz" && \
 
 # ==================================================================
 # config & cleanup
