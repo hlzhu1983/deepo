@@ -118,8 +118,8 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         pyclipper \
         shapely \
         sentencepiece \
-        paddlepaddle \
-        paddlehub \
+        paddlepaddle==2.0.2 \
+        paddlehub==2.0.4 \
         paddlex \
         visualdl \
         && \
