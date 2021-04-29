@@ -74,6 +74,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         setuptools \
         && \
     $PIP_INSTALL \
+        hanlp \
         numpy \
         scipy \
         pandas \
