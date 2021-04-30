@@ -66,9 +66,9 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         https://bootstrap.pypa.io/get-pip.py && \
     mkdir ~/.pip && \
     cd ~/.pip/  && \
-    echo "[global] \ntrusted-host = pypi.douban.com \nindex-url = http://pypi.douban.com/simple" >  pip.conf && \
+    echo "[global] \ntrusted-host =  pypi.douban.com \nindex-url = http://pypi.douban.com/simple" >  pip.conf && \
     python3.6 ~/get-pip.py && \
-    ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \trusted-host = pypi.douban.com \nindex-url = http://pypi.douban.com/simple
+    ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
     ln -s /usr/bin/python3.6 /usr/local/bin/python && \
     $PIP_INSTALL \
         setuptools \
@@ -159,8 +159,8 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         jupyterhub \
         /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl \
         && \
-    yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \  
-    
+    yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
+
 # ==================================================================
 # opencv
 # ------------------------------------------------------------------
