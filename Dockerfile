@@ -74,7 +74,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         setuptools \
         && \
     $PIP_INSTALL \
-        hanlp \
         numpy \
         scipy \
         pandas \
@@ -161,6 +160,15 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl \
         && \
     yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
+    
+# ==================================================================
+# hanlp
+# ------------------------------------------------------------------
+
+    $PIP_INSTALL \
+        hanlp \
+        fastapi \
+        uvicorn && \
 
 # ==================================================================
 # opencv
