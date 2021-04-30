@@ -66,7 +66,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         https://bootstrap.pypa.io/get-pip.py && \
     mkdir ~/.pip && \
     cd ~/.pip/  && \
-    echo "[global] \ntrusted-host =  pypi.douban.com \nindex-url = http://pypi.douban.com/simple" >  pip.conf && \
+    echo "[global] \ntrusted-host =  https://pypi.tuna.tsinghua.edu.cn \nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" >  pip.conf && \
     python3.6 ~/get-pip.py && \
     ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
     ln -s /usr/bin/python3.6 /usr/local/bin/python && \
@@ -80,7 +80,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         cloudpickle \
         scikit-image>=0.14.2 \
         scikit-learn \
-        matplotlib==3.3.3 \
+        matplotlib \
         Cython \
         tqdm \
         && \
