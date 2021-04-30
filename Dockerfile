@@ -80,7 +80,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         cloudpickle \
         scikit-image>=0.14.2 \
         scikit-learn \
-        matplotlib \
+        matplotlib==3.3.3 \
         Cython \
         tqdm \
         && \
