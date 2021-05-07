@@ -1,0 +1,5 @@
+FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:v1.2.1
+
+RUN pip install fastapi \
+        uvicorn \
+        hanlp[all]
