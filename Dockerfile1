@@ -1,13 +1,13 @@
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:v1.2.1
 
-RUN pip install ddparser \
-export SYNONYMS_WORD2VEC_BIN_URL_ZH_CN=https://gitee.com/chatopera/cskefu/attach_files/610602/download/words.vector.gz \
+RUN export SYNONYMS_WORD2VEC_BIN_URL_ZH_CN=https://gitee.com/chatopera/cskefu/attach_files/610602/download/words.vector.gz \
 pip install -U synonyms \
 python -c "import synonyms" \
 pip install -U xmnlp \
 pip install -U jiagu \
 pip install cocoNLP \
-pip install hanlp[full]
+pip install hanlp[full] \
+pip install textrank4zh
 
 
 
