@@ -4,7 +4,7 @@ RUN pip install synonyms \
 xmnlp \
 jiagu \
 cocoNLP \
-hanlp[full] \
+hanlp \
 textrank4zh \
 fastapi \
 uvicorn \
