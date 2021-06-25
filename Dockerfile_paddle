@@ -1,0 +1,13 @@
+FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:base
+
+RUN pip install synonyms \
+xmnlp \
+jiagu \
+cocoNLP \
+hanlp \
+textrank4zh \
+fastapi \
+uvicorn \
+&& \ 
+export SYNONYMS_WORD2VEC_BIN_URL_ZH_CN=https://gitee.com/chatopera/cskefu/attach_files/610602/download/words.vector.gz &&\
+python -c "import synonyms"
