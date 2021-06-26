@@ -4,5 +4,4 @@ RUN pip install paddlepaddle==2.0.2 \
 paddlehub==2.0.4 \
 paddlenlp \
 paddlex \
-visualdl \
-&& \
+visualdl
