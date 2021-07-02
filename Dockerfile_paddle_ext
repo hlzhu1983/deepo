@@ -2,5 +2,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:paddle
 
 ADD test.py /opt/test.py
 
-RUN pip install jionlp && \
+RUN git clone https://github.com/dongrixinyu/JioNLP && \
+cd ./JioNLP && \
+pip install . && \
 python /opt/test.py
