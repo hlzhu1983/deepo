@@ -1,3 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:paddle
 
-RUN pip install jionlp 
+ADD test.py /opt/test.py
+
+RUN pip install jionlp && \
+python /opt/test.py
