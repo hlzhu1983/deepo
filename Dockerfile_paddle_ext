@@ -1,10 +1,3 @@
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:paddle
 
-RUN pip install synonyms \
-jionlp \
-&& \ 
-export SYNONYMS_WORD2VEC_BIN_URL_ZH_CN=https://gitee.com/chatopera/cskefu/attach_files/610602/download/words.vector.gz &&\
-python -c "import synonyms" &&\
-python -c "import jionlp as jio
-text ='''调处理。'''
-res = jio.summary.extract_summary(text) "
+RUN pip install jionlp 
