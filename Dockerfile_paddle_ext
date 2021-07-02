@@ -1,0 +1,10 @@
+FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:paddle
+
+RUN pip install synonyms \
+xmnlp \
+jiagu \
+cocoNLP \
+textrank4zh \
+&& \ 
+export SYNONYMS_WORD2VEC_BIN_URL_ZH_CN=https://gitee.com/chatopera/cskefu/attach_files/610602/download/words.vector.gz &&\
+python -c "import synonyms"
