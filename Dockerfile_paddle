@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:base
 
-RUN pip install paddlepaddle==2.0.2 \
+RUN pip install paddlepaddle==2.3.0 \
 paddlehub==2.0.4 \
 paddlenlp \
 paddlex \
