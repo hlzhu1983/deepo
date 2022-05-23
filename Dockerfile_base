@@ -61,7 +61,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     mkdir ~/.pip && \
     cd ~/.pip/  && \
     echo "[global] \ntrusted-host =  mirrors.aliyun.com \nindex-url = http://mirrors.aliyun.com/pypi/simple/" >  pip.conf && \
-    python3.10 ~/get-pip.py && \
+    python3.8 ~/get-pip.py && \
     ln -s /usr/bin/python3.8 /usr/local/bin/python3 && \
     ln -s /usr/bin/python3.8 /usr/local/bin/python && \
     $PIP_INSTALL \
