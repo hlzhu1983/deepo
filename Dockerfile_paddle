@@ -2,4 +2,3 @@ FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:base
 
 RUN pip install paddlepaddle==2.4.2 -i https://mirror.baidu.com/pypi/simple && \
 pip install paddlenlp==2.4.9 -i https://mirror.baidu.com/pypi/simple && \
-pip install paddlex 
