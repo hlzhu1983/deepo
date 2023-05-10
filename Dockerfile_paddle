@@ -1,7 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/hlzhu/deepo:base
 
 RUN pip install paddlepaddle==2.4.2 -i https://mirror.baidu.com/pypi/simple && \
-pip install --upgrade paddlehub==2.3 -i https://mirror.baidu.com/pypi/simple && \
-pip install --upgrade paddlenlp==2.4 -i https://mirror.baidu.com/pypi/simple && \
+pip install --upgrade paddlehub==2.3.1 -i https://mirror.baidu.com/pypi/simple && \
+pip install --upgrade paddlenlp==2.4.9 -i https://mirror.baidu.com/pypi/simple && \
 pip install paddlex \
 visualdl
