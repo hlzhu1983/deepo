@@ -110,6 +110,19 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     ldconfig && \
     apt-get clean && \
     apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/* /tmp/* ~/* /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl
+    rm -rf /var/lib/apt/lists/* /tmp/* ~/* /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl && \
+    
+    $PIP_INSTALL \
+        nltk \
+        imgaug \
+        tools \
+        pyclipper \
+        shapely \
+        sentencepiece \
+        paddlepaddle \
+        paddlehub \
+        paddlenlp \
+        paddlex \
+        visualdl
 
 EXPOSE 8888 6006
