@@ -50,15 +50,4 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     mkdir ~/.pip && \
     cd ~/.pip/  && \
     echo "[global] \ntrusted-host =  mirrors.aliyun.com \nindex-url = http://mirrors.aliyun.com/pypi/simple/" >  pip.conf && \
-    $PIP_INSTALL \
-        numpy \
-        scipy \
-        pandas \
-        scikit-image \
-        scikit-learn \
-        matplotlib \
-        Cython \
-        tqdm \
-	fastapi \
-        uvicorn \
-        hanlp[full] 
+     
