@@ -5,6 +5,19 @@ ADD https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/jupyterhub/jupyterlab_la
 RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="git clone --depth 10" && \
+    
+    $PIP_INSTALL \
+        numpy \
+        scipy \
+        pandas \
+        scikit-image \
+        scikit-learn \
+        matplotlib \
+        Cython \
+        tqdm \
+	fastapi \
+        uvicorn \
+        hanlp[full] && \    
 
 # ==================================================================
 # chainer
