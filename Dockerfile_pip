@@ -1,21 +1,7 @@
-# ==================================================================
-# module list
-# ------------------------------------------------------------------
-# python        3.8    (apt)
-# chainer       latest (pip)
-# jupyter       latest (pip)
-# mxnet         latest (pip)
-# onnx          latest (pip)
-# paddle        latest (pip)
-# pytorch       latest (pip)
-# tensorflow    latest (pip)
-# jupyterlab    latest (pip)
-# keras         latest (pip)
-# ==================================================================
-
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ENV LANG C.UTF-8
 ENV NODE_VERSION 15.6.0
+ADD https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/jupyterhub/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl /opt/
 RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="git clone --depth 10" && \
@@ -23,10 +9,11 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     rm -rf /var/lib/apt/lists/* \
            /etc/apt/sources.list.d/cuda.list \
            /etc/apt/sources.list.d/nvidia-ml.list && \
-		   
-	sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
-		   
+
+    sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \	
+    
     apt-get update && \
+
 
 # ==================================================================
 # tools
@@ -46,6 +33,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         cmake \
         && \
 
+    yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
 
 # ==================================================================
 # python
@@ -56,14 +44,12 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         python3.8 \
         python3.8-dev \
         python3.8-distutils \
+	python3-pip \
         && \
     ln -s /usr/bin/python3.8 /usr/local/bin/python && \
-	wget -O ~/get-pip.py \
-        https://bootstrap.pypa.io/get-pip.py && \
     mkdir ~/.pip && \
     cd ~/.pip/  && \
     echo "[global] \ntrusted-host =  mirrors.aliyun.com \nindex-url = http://mirrors.aliyun.com/pypi/simple/" >  pip.conf && \
-    python ~/get-pip.py && \
     $PIP_INSTALL \
         numpy \
         scipy \
@@ -75,4 +61,4 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         tqdm \
 	fastapi \
         uvicorn \
-        hanlp[full]
+        hanlp[full] 
