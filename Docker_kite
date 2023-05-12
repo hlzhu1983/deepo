@@ -1,0 +1,3 @@
+FROM ubuntu:20.04
+
+RUN yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
