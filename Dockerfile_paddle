@@ -75,12 +75,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         tools \
         pyclipper \
         shapely \
-        sentencepiece \
-        paddlepaddle \
-        paddlehub \
-        paddlenlp \
-        paddlex \
-        visualdl \ 
+        sentencepiece \ 
 		&& \
 
 # ==================================================================
@@ -126,6 +121,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     # Now Keras comes packaged with TensorFlow 2
     # as tensorflow.keras. To start using Keras,
     # simply install TensorFlow 2.
+    
 
 # ==================================================================
 # config & cleanup
@@ -135,5 +131,11 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/* /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl
+    
+RUN pip install --upgrade paddlepaddle -i https://mirror.baidu.com/pypi/simple && \
+pip install --upgrade paddlehub -i https://mirror.baidu.com/pypi/simple && \
+pip install --upgrade paddlenlp -i https://mirror.baidu.com/pypi/simple && \
+pip install paddlex \
+visualdl
 
 EXPOSE 8888 6006
