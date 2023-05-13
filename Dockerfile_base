@@ -1,13 +1,6 @@
-# ==================================================================
-# module list
-# ------------------------------------------------------------------
-# python        3.6    (apt)
-# ==================================================================
-
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ENV LANG C.UTF-8
 ENV NODE_VERSION 15.6.0
-ADD https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/jupyterhub/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl /opt/
 RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="git clone --depth 10" && \
@@ -16,7 +9,10 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
            /etc/apt/sources.list.d/cuda.list \
            /etc/apt/sources.list.d/nvidia-ml.list && \
 
+    sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \	
+    
     apt-get update && \
+
 
 # ==================================================================
 # tools
@@ -33,96 +29,21 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         curl \
         unzip \
         unrar \
-        libgl1-mesa-glx \
-        lsof \
+        cmake \
         && \
-
-    $GIT_CLONE https://github.com/Kitware/CMake ~/cmake && \
-    cd ~/cmake && \
-    ./bootstrap && \
-    make -j"$(nproc)" install && \
 
 # ==================================================================
 # python
 # ------------------------------------------------------------------
 
-    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-        software-properties-common \
-        && \
-    add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-        python3.6 \
-        python3.6-dev \
-        python3-distutils-extra \
+        python3.8 \
+        python3.8-dev \
+        python3.8-distutils \
+	python3-pip \
         && \
-    wget -O ~/get-pip.py \
-        https://bootstrap.pypa.io/get-pip.py && \
+    ln -s /usr/bin/python3.8 /usr/local/bin/python && \
     mkdir ~/.pip && \
     cd ~/.pip/  && \
-    echo "[global] \ntrusted-host =  mirrors.aliyun.com \nindex-url = http://mirrors.aliyun.com/pypi/simple/" >  pip.conf && \
-    python3.6 ~/get-pip.py && \
-    ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
-    ln -s /usr/bin/python3.6 /usr/local/bin/python && \
-    $PIP_INSTALL \
-        setuptools \
-        && \
-    $PIP_INSTALL \
-        numpy \
-        scipy \
-        pandas \
-        cloudpickle \
-        scikit-image>=0.14.2 \
-        scikit-learn \
-        matplotlib \
-        Cython \
-        tqdm \
-        fastapi \
-        uvicorn \
-        hanlp[full] \
-        && \
-
-# ==================================================================
-# jupyter
-# ------------------------------------------------------------------
-
-    $PIP_INSTALL \
-        jupyter \
-        && \
-        
-# ==================================================================
-# jupyterlab
-# ------------------------------------------------------------------
-
-    $PIP_INSTALL \
-        jupyterlab \
-        jupyterlab-kite>=2.0.2 \
-        jupyterhub \
-        /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl \
-        && \
-    yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
-
-
-# ==================================================================
-# config & cleanup
-# ------------------------------------------------------------------
-
-    ldconfig && \
-    apt-get clean && \
-    apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/* /tmp/* ~/* /opt/jupyterlab_language_pack_zh_CN-0.0.1.dev0-py2.py3-none-any.whl && \
-    
-    $PIP_INSTALL \
-        nltk \
-        imgaug \
-        tools \
-        pyclipper \
-        shapely \
-        sentencepiece \
-        paddlepaddle \
-        paddlehub \
-        paddlenlp \
-        paddlex \
-        visualdl
-
-EXPOSE 8888 6006
+    echo "[global] \ntrusted-host =  mirrors.aliyun.com \nindex-url = http://mirrors.aliyun.com/pypi/simple/" >  pip.conf
