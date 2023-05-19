@@ -20,8 +20,35 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
 		pyclipper \
 		sentencepiece \
 		pypinyin \
+		protobuf \
+		transformers==4.27.1 \
+		cpm_kernels \
+		torch>=1.10 \
+		gradio \
+		mdtex2html \
+		bottle \
+		paste \
+		sqlalchemy \
+		sqlalchemy_utils \
+		faiss-cpu \
+		sentence_transformers \
+		langchain \
+		pdfplumber \
+		InstructorEmbedding \
+		tiktoken \
+		unstructured \
+		jieba \
+		requests \
+		chardet \
+		rwkv \
+		pyyaml \
+		rich==12.5.1 \
+		icetk \
+		streamlit \
+		accelerate \
 		&& \
 
+		
 # ==================================================================
 # jupyter
 # ------------------------------------------------------------------
