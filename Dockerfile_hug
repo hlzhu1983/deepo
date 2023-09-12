@@ -1,0 +1,28 @@
+FROM ubuntu:20.04
+ENV LANG C.UTF-8
+RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
+    GIT_CLONE="git clone --depth 10" && \
+
+    rm -rf /var/lib/apt/lists/* \
+           /etc/apt/sources.list.d/cuda.list \
+           /etc/apt/sources.list.d/nvidia-ml.list && \
+
+    sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \	
+    
+    apt-get update && \
+
+
+# ==================================================================
+# tools
+# ------------------------------------------------------------------
+
+    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+        git \
+        && \
+
+# ==================================================================
+# python
+# ------------------------------------------------------------------
+
+    cd /opt/  && \
+    git clone https://huggingface.co/OpenBuddy/openbuddy-llama2-13b-v11.1-bf16
